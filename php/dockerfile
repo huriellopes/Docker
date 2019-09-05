@@ -1,0 +1,30 @@
+FROM php:7.2-fpm-alpine
+
+LABEL maintainer="Huriel Lopes <huriellopes1996@gmail.com>"
+
+WORKDIR /var/www
+
+# COPY ./config/php.ini /usr/local/etc/php/conf.d/php.ini
+
+#RUN apk add update && \ 
+ #   apk add composer && \
+    # apk add php-7.3-sqlite && \
+  #  apk add vim
+
+RUN apk add --update \
+        alpine-sdk autoconf curl curl-dev freetds-dev \
+        libxml2-dev jpeg-dev openldap-dev libmcrypt-dev \
+        libpng-dev libxslt-dev postgresql-dev
+
+RUN docker-php-ext-install \
+    mysqli openssl mbstring xml xsl pdo_sqlite \
+    gd curl fileinfo json zip pdo sockets
+
+RUN apk add npm
+
+# Install nodejs and npm
+# RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
+# RUN apt-get update && \
+  #  apt-get install -y nodejs
+# RUN npm install -g n npm@latest
+# RUN n 8.*

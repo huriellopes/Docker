@@ -1,0 +1,8 @@
+FROM nginx:alpine
+
+WORKDIR /var/www/
+
+RUN rm -rf /usr/share/nginx/html
+
+# RUN composer create-project --prefer-dist laravel/laravel ${NAME_PROJECT} ${VERSION_LARAVEL}
+
