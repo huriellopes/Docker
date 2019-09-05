@@ -41,7 +41,10 @@ RUN apk add --no-cache libpng-dev libjpeg-turbo-dev && \
     docker-php-ext-install soap; \
     \
     # Instala a extensão para cache de bytecode OPcache
-    docker-php-ext-install opcache
+    docker-php-ext-install opcache; \
+    \
+
+    docker-php-ext-install sqlite3 pdo_sqlite
 
 # Limpa repositório local e atribuimos permissão ao /start.sh
 RUN rm -rf /var/cache/apk/*
